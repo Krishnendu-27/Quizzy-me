@@ -7,12 +7,16 @@ export const useQuizStore = create((set) => ({
   players: [],
   questions: [],
 
+  currentQuestion: null,
+
   setUser: (user) => set({ currentUser: user }),
-  setRoomInfo: (code, name) => set({ roomCode: code, roomName: name }),
-  addQuestion: (question) =>
+  setRoomInfo: (code) => set({ roomCode: code }),
+  setQuestions: (question) =>
     set((state) => ({
       questions: [...state.questions, question],
     })),
+  setLiveQuestion: (questionData) => set({ currentQuestion: questionData }),
+
   setPlayers: (players) => set({ players }),
   addPlayer: (player) =>
     set((state) => ({
