@@ -11,14 +11,17 @@ export const useQuizStore = create((set) => ({
   results: null, // { leaderboard: [], userAnswers: [], totalQuestions: 0 }
   userScore: 0,
   userAnswers: [], // Array of { question, selectedAnswer, correctAnswer, isCorrect }
+  currentQuestion: null,
 
   setUser: (user) => set({ currentUser: user }),
-  setRoomInfo: (code, name) => set({ roomCode: code, roomName: name }),
-  addQuestion: (question) =>
+  setRoomInfo: (code) => set({ roomCode: code }),
+  setQuestions: (question) =>
     set((state) => ({
       questions: [...state.questions, question],
     })),
   setQuestions: (questions) => set({ questions }),
+  setLiveQuestion: (questionData) => set({ currentQuestion: questionData }),
+
   setPlayers: (players) => set({ players }),
   addPlayer: (player) =>
     set((state) => ({
