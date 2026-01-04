@@ -1,9 +1,16 @@
 import axios from "axios";
 import useAuthStore from "../stores/useAuthStore";
+import { io } from "socket.io-client";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
   withCredentials: true,
+});
+
+export const socket = io(import.meta.env.VITE_BACKEND_URL, {
+  transports: ["websocket"],
+  withCredentials: true,
+  autoConnect: false,
 });
 
 // Request
